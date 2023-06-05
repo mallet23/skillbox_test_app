@@ -1,0 +1,14 @@
+.accountButton {
+    all: unset;
+}
+
+.accountButton_icon {
+    cursor: pointer;
+    color: aquamarine;
+    width: 40px;
+    height: 40px;
+}
+
+.accountButton_icon:hover {
+    color: aqua;
+}

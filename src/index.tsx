@@ -1,15 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import App from "./App";
 
-const appRouting = (
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
-  </Router>
-);
+const createApp = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
 
-ReactDOM.render(appRouting, document.getElementById("root"));
+  return (
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  );
+};
+const appRoot = document.getElementById("root")!;
+const root = ReactDOM.createRoot(appRoot);
+root.render(createApp())

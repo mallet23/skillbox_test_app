@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Artur Salakhov",
+      "email": "gsmilexd@gmail.com"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "tab1",
+      "pageId": "chapter1",
+      "title": "Глава 1"
+    },
+    {
+      "id": "tab2",
+      "pageId": "chapter2",
+      "title": "Глава 2"
+    },
+    {
+      "id": "tab3",
+      "pageId": "chapter3",
+      "title": "Глава 3"
+    },
+    {
+      "id": "tab4",
+      "pageId": "chapter4",
+      "title": "Глава 4"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter1",
+      "content": "Описание для главы 1"
+    },
+    {
+      "id": "chapter2",
+      "content": "Описание для главы 2"
+    },
+    {
+      "id": "chapter3",
+      "content": "Описание для главы 3"
+    },
+    {
+      "id": "chapter4",
+      "content": "Описание для главы 4"
+    }
+  ]
+}

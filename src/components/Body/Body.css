@@ -1,6 +1,14 @@
 .body {
+    flex: 1;
     display: flex;
     height: 100%;
     width: 100%;
     justify-content: space-between;
+}
+
+.content {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

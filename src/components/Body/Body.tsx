@@ -1,15 +1,17 @@
 import React from "react";
 
 import { ASide } from "./ASide";
-import { Content } from "./Content";
 
 import "./Body.css";
+import { Outlet } from "react-router-dom";
 
 const Body: React.FC = () => {
   return (
     <div className="body">
       <ASide />
-      <Content />
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   );
 };

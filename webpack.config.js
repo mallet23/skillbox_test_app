@@ -8,6 +8,7 @@ module.exports = (options = {}) => {
   return {
     mode: isProduction ? "production" : "development",
     entry: "./src/index.tsx",
+    target: "web",
     output: {
       filename: "[name].[contenthash].js",
       assetModuleFilename: "static/[name][ext]",
@@ -47,6 +48,9 @@ module.exports = (options = {}) => {
     ],
     devServer: {
       open: true,
+
+      allowedHosts: "all",
+      historyApiFallback: true,
     },
   };
 };
