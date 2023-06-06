@@ -2,6 +2,8 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
+const API_SERVER = "http://localhost:3000";
+
 module.exports = (options = {}) => {
   const { production: isProduction } = options;
 
@@ -48,9 +50,16 @@ module.exports = (options = {}) => {
     ],
     devServer: {
       open: true,
-
       allowedHosts: "all",
       historyApiFallback: true,
+      proxy: {
+        "/api": {
+          target: API_SERVER,
+          pathRewrite: { "^/api": "" },
+          secure: false,
+          changeOrigin: true,
+        },
+      },
     },
   };
 };

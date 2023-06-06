@@ -4,8 +4,8 @@
   "description": "Test Task for Skillbox",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --port 3000",
-    "start:server": "json-server --watch ./server/db.json --port 3004",
+    "start": "webpack serve",
+    "start:server": "json-server --watch ./server/db.json",
     "build": "NODE_ENV=production webpack"
   },
   "author": "Artur Salakhov",
