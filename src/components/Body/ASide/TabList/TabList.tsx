@@ -1,16 +1,14 @@
-import React, { useCallback } from "react";
+import React from "react";
 
-import { useLocation, useNavigate } from "react-router-dom";
+import { Location, useLocation, useNavigate } from "react-router-dom";
 
 import { useTabsQuery } from "../../../../api";
 import { Tab } from "./Tab";
 
 const TabList: React.FC = () => {
   const { data: chapters, isFetching } = useTabsQuery();
-  const { pathname } = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
-
-  const handleTabClick = useCallback((path: string) => {}, []);
 
   if (isFetching) {
     return <span>Loading...</span>;
@@ -22,23 +20,33 @@ const TabList: React.FC = () => {
 
   return (
     <ul>
-      <Tab path={"intro"} isActive={"intro" === pathname} onClick={navigate}>
+      <Tab
+        path={"intro"}
+        isActive={isTabSelected(location, "intro")}
+        onClick={navigate}
+      >
         Описание
       </Tab>
-      {chapters.map((chapter) => (
-        <Tab
-          key={chapter.id}
-          path={`chapters/${chapter.pageId}`}
-          isActive={chapter.id === pathname}
-          onClick={navigate}
-        >
-          {chapter.title}
-        </Tab>
-      ))}
+      {chapters.map((chapter) => {
+        const path = `chapters/${chapter.pageId}`;
+
+        return (
+          <Tab
+            key={path}
+            path={path}
+            isActive={isTabSelected(location, path)}
+            onClick={navigate}
+          >
+            {chapter.title}
+          </Tab>
+        );
+      })}
     </ul>
   );
 };
 
-const ComponentWrapper = React.memo(TabList);
+const isTabSelected = (location: Location, tabId: string) =>
+  location.pathname.startsWith(`/${tabId}`);
 
+const ComponentWrapper = React.memo(TabList);
 export { ComponentWrapper as TabList };
